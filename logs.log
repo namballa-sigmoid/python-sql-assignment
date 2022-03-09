@@ -1,0 +1,28 @@
+2022-03-09 16:22:50,704: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:22:50,716: INFO --> __init__() --> Schema Creation Failed
+2022-03-09 16:22:50,716: INFO --> __init__() --> Connection Close
+2022-03-09 16:26:10,094: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:26:10,095: INFO --> __init__() --> Schema Creation Failed
+2022-03-09 16:26:10,095: INFO --> __init__() --> Connection Close
+2022-03-09 16:26:34,812: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:26:34,820: INFO --> __init__() --> Schema Creation Failed
+2022-03-09 16:26:34,820: INFO --> __init__() --> Connection Close
+2022-03-09 16:36:16,219: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:36:16,221: INFO --> __init__() --> Schema Creation Failed
+2022-03-09 16:36:16,221: INFO --> __init__() --> Connection Close
+2022-03-09 16:37:50,326: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:38:14,253: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:39:17,606: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:44:07,289: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:44:44,355: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:45:26,695: INFO --> get_connection() --> Connection successfully established
+2022-03-09 16:46:16,694: INFO --> get_connection() --> Connection successfully established
+2022-03-09 17:06:08,131: INFO --> get_connection() --> Connection successfully established
+2022-03-09 17:07:47,664: INFO --> get_connection() --> Connection successfully established
+2022-03-09 17:12:05,182: INFO --> get_connection() --> Connection successfully established
+2022-03-09 17:16:30,042: INFO --> get_connection() --> Connection successfully established
+2022-03-09 17:16:30,043: INFO --> __init__() --> Schema Creation Failed
+2022-03-09 17:16:30,044: INFO --> __init__() --> Connection Close
+2022-03-09 17:19:19,319: INFO --> get_connection() --> Connection successfully established
+2022-03-09 17:19:19,357: INFO --> __init__() --> Schema Created
+2022-03-09 17:19:19,358: INFO --> __init__() --> Connection Close

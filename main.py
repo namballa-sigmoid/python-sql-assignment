@@ -7,15 +7,12 @@ logging.basicConfig(filename='logs.log', level=logging.INFO,
 
 user = "namballamukesh"
 database = "postgres"
-password = "none"
+password = "Mukesh@123"
 host = "localhost"
 port = "5432"
 
 
 class Employee:
-    def __init__(self):
-        pass
-
     # Query-1
     def list_of_employees(self):
         connection = create_connection.get_connection(self, database=database, user=user, password=password,
@@ -119,12 +116,13 @@ class Employee:
         final_data.save()
 
 
-obj = Employee()
-# q1
-obj.list_of_employees()
-# q2
-obj.total_compensation()
-# q3
-obj.file_to_table()
-# q4
-obj.compensation_at_dept_level()
+if __name__ == "__main()__":
+    obj = Employee()
+    # q1
+    obj.list_of_employees()
+    # q2
+    obj.total_compensation()
+    # q3
+    obj.file_to_table()
+    # q4
+    obj.compensation_at_dept_level()

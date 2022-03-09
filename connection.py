@@ -2,6 +2,8 @@ import psycopg2
 import logging
 from sqlalchemy import create_engine
 
+
+# Connection class provides methods
 class create_connection:
     def get_connection(self, database, user, password, host, port):
         try:
