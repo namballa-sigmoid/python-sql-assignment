@@ -26,3 +26,10 @@
 2022-03-09 17:19:19,319: INFO --> get_connection() --> Connection successfully established
 2022-03-09 17:19:19,357: INFO --> __init__() --> Schema Created
 2022-03-09 17:19:19,358: INFO --> __init__() --> Connection Close
+2022-03-10 17:49:19,242: INFO --> get_connection() --> Connection successfully established
+2022-03-10 17:49:19,298: INFO --> get_engine() --> Engine successfully created
+2022-03-10 17:53:41,126: INFO --> get_connection() --> Connection successfully established
+2022-03-10 17:53:41,149: INFO --> get_engine() --> Engine successfully created
+2022-03-10 17:53:41,956: INFO --> file_to_query() --> Query Execution Unsuccessful
+2022-03-10 17:53:41,956: INFO --> file_to_query() --> Table Creation Successful.
+2022-03-10 17:53:41,970: INFO --> read_sheets() --> Execution Successful.

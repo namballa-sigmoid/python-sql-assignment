@@ -5,25 +5,26 @@ from connection import create_connection
 logging.basicConfig(filename='logs.log', level=logging.INFO,
                     format='%(asctime)s: %(levelname)s --> %(funcName)s() --> %(message)s')
 
-user = "namballamukesh"
-database = "postgres"
-password = "Mukesh@123"
-host = "localhost"
-port = "5432"
-
 
 class Employee:
+    def __init__(self, user, database, password, host, port):
+        self.connection = create_connection.get_connection(self, database=database, user=user, password=password,
+                                                      host=host, port=port)
+        self.engine = create_connection.get_engine(self, user=user, password=password, host=host,
+                                              port=port, database=database)
+        self.cur = self.connection.cursor()
+
+    def close(self):
+        self.connection.commit()
+        self.connection.close()
+
     # Query-1
     def list_of_employees(self):
-        connection = create_connection.get_connection(self, database=database, user=user, password=password,
-                                                      host=host, port=port)
-        cur = connection.cursor()
-        data = cur.execute(
+        self.cur.execute(
             "SELECT t1.empno as EmployeeNumber, t1.ename as EmployeeName, t2.ename as Manager FROM emp t1, "
             "emp t2 WHERE t1.mgr=t2.empno;")
-        rows = cur.fetchall()
+        rows = self.cur.fetchall()
         EMP_Number, Name, Manager = ([] for i in range(3))
-
         for row in rows:
             temp_list = list(row)
             EMP_Number.append(temp_list[0])
@@ -35,23 +36,18 @@ class Employee:
         final_data = pd.ExcelWriter('ques1.xlsx')
         df.to_excel(final_data, sheet_name='ques1', index=False)
         final_data.save()
-        connection.close()
-        logging.info("Connection Close")
 
     # Query-2
 
     def total_compensation(self):
-        connection = create_connection.get_connection(self, database=database, user=user, password=password,
-                                                      host=host, port=port)
-        cur = connection.cursor()
-        cur.execute("UPDATE jobhist SET enddate=CURRENT_DATE WHERE enddate IS NULL;")
-        data = cur.execute(
+        self.cur.execute("UPDATE jobhist SET enddate=CURRENT_DATE WHERE enddate IS NULL;")
+        data = self.cur.execute(
             "SELECT emp.ename, "
             "jh.empno, dept.dname, jh.deptno, "
             "ROUND((jh.enddate-jh.startdate)/30*jh.sal,0) "
             "AS total_compensation, ROUND((jh.enddate-jh.startdate)/30,0) as months_spent FROM "
             "jobhist as jh INNER JOIN dept ON jh.deptno=dept.deptno INNER JOIN emp ON jh.empno=emp.empno;")
-        rows = cur.fetchall()
+        rows = self.cur.fetchall()
         Employee_Name, Employee_No, Dept_Name, Dept_Number, Dept_Number, Total_Compensation, Months_Spent = ([] for i in
                                                                                                              range(7))
 
@@ -70,17 +66,13 @@ class Employee:
         writer = pd.ExcelWriter('ques2.xlsx')
         df.to_excel(writer, sheet_name='Q2', index=False)
         writer.save()
-        connection.close()
-        logging.info("Connection Close")
 
     # Query-3
     def file_to_query(self, data, file):
-        engine = create_connection.get_engine(self, user=user, password=password, host=host,
-                                              port=port, database=database)
         try:
             if data == 'Q2':
                 df = pd.read_excel(file, 'Q2')
-                df.to_sql(name='total_compensation', con=engine, if_exists='append', index=False)
+                df.to_sql(name='total_compensation', con=self.engine, if_exists='append', index=False)
         except:
             logging.info("Query Execution Unsuccessful")
         finally:
@@ -116,8 +108,8 @@ class Employee:
         final_data.save()
 
 
-if __name__ == "__main()__":
-    obj = Employee()
+if __name__ == "__main__":
+    obj = Employee("namballamukesh", "postgres", "Mukesh@123", "localhost", "5432")
     # q1
     obj.list_of_employees()
     # q2
@@ -126,3 +118,4 @@ if __name__ == "__main()__":
     obj.file_to_table()
     # q4
     obj.compensation_at_dept_level()
+    obj.close()
